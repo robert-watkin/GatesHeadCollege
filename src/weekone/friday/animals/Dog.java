@@ -21,7 +21,7 @@ public class Dog {
         } else if (size.equalsIgnoreCase("medium")) {
             bark = "woof woof";
         } else {
-            bark = "WOOF WOOF!";
+            // bark = "WOOF WOOF!";
         }
 
         return bark;
