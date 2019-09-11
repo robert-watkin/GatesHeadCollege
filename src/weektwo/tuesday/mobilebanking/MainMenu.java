@@ -1,21 +1,26 @@
 package weektwo.tuesday.mobilebanking;
-
 import com.sun.tools.javac.Main;
-
 import java.util.Scanner;
 
 public class MainMenu {
 
+    /*
+    hold logged in user
+     */
+    User user;
+    String username;
+    String password;
     int choice;
     Scanner sc = new Scanner(System.in);
 
-    public static void main(String[] args) {
-        MainMenu menu = new MainMenu();
+    public MainMenu(User user) {
+        this.user = user;
+    }
 
-        menu.displayMenu();
-        menu.userChoice(4);
-        menu.processChoice();
-
+    public void run(){
+        displayMenu();
+        userChoice(4);
+        processChoice();
     }
 
     // Display Menu
@@ -23,7 +28,7 @@ public class MainMenu {
         System.out.println("---Mobile Banking---");
         System.out.println("1 >\tOpen New Account");
         System.out.println("2 >\tView All Accounts");
-        System.out.println("3 >\tView Transactions");
+        System.out.println("3 >\tStatements");
         System.out.println("4 >\tTransfer Funds");
         System.out.println("0 >\tLog Out");
         System.out.println();
