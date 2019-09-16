@@ -60,5 +60,20 @@ public class Library {
     }
 
     private void searchBook() {
+        System.out.println("What is the name of the book you would like to search for?");
+        String title = sc.nextLine();
+
+        for(int i = 0; i < books.length; i++){
+            if (books[i].bookTitle.equalsIgnoreCase(title)){
+                System.out.println("We stock that book in the library");
+                System.out.println("Return to the main menu to check if it is available");
+                menu();
+            }
+            else if(i == books.length - 1){
+                System.out.println("Sorry we do not currently stock");
+                System.out.println();
+                menu();
+            }
+        }
     }
 }
