@@ -12,8 +12,18 @@ public class createUser {
 
         System.out.println("Please input a username: ");
         username = sc.nextLine();
-        System.out.println("Please input a new password: ");
+        System.out.println("Please input a new pabssword: ");
         password = sc.nextLine();
+        System.out.println("Please enter your age:");
+        String line = sc.nextLine();
+        byte age = 0;
+        if (line != null || !line.equals("")){
+            age = Byte.parseByte(line);
+        }
+        System.out.println("Please enter your forename");
+        String fn = sc.nextLine();
+        System.out.println("Please enter your surname");
+        String sn = sc.nextLine();
         System.out.println("Please input your phonenumber: ");
         phonenumber = Long.parseLong(sc.nextLine());
         System.out.println("Please input your gender (m/f) :");
@@ -22,6 +32,14 @@ public class createUser {
         }else{
             gender = false;
         }
-        User u = new User(username, password, phonenumber, gender);
+        if (fn.equals("") && sn.equals("") && age == 0){
+            User u = new User(username, password, phonenumber, gender);
+        }
+        else{
+            User u = new User(username, password, age, fn, sn, phonenumber, gender);
+        }
+
+
+
     }
 }
