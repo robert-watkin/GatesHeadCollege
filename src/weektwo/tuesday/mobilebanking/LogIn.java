@@ -5,19 +5,24 @@ public class LogIn {
 
     String username;
     String password;
-    User[] users = new User[1];
+    User[] users = new User[4];
     Scanner sc = new Scanner(System.in);
 
     public static void main(String[] args) {
         LogIn li = new LogIn();
+        li.initialise();
         li.loginUser();
+    }
+
+    private void initialise(){
+        users[0] = new User("Robert Watkin", "robby1110", "Password1");
+        users[1] = new User("Amanda Rae", "amxnda", "Jessica1");
+        users[2] = new User("Robert Watkin", "potatoman", "shoeLace");
+        users[3] = new User("Robert Watkin", "afganDan", "radge");
     }
 
     // method loginUser -->
     private void loginUser() {
-        User u = new User("Robert Watkin", "robby1110", "Password1");
-        users[0] = u;
-
         //ask for username
         System.out.println("Username : ");
         //username input

@@ -20,12 +20,12 @@ public class TimesTables {
 
 
     private void generateTable(int table, int max, int start){
-        /*
+
         for (int x = start; x <= max; x++){
             System.out.println(x + " * " + table + " = " + (x*table));
         }
 
-         */
+
 
         // while loop - will not actually hit the max value specified
         /*
@@ -41,6 +41,5 @@ public class TimesTables {
             System.out.println(start + " * " + table + " = " + (start*table));
             start++;
         } while(start <= max);
-
     }
 }
