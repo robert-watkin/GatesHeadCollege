@@ -17,7 +17,8 @@ public class LogIn {
     }
 
     private void initialise(){
-        Initialise init = new Initialise(users);
+        Initialise init = new Initialise();
+        users = init.seedData();
     }
 
 
