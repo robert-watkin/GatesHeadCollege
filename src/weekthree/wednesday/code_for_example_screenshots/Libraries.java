@@ -5,6 +5,7 @@ public class Libraries {
     Scanner sc = new Scanner(System.in); // Scanner object created
 
     public static void main(String[] args) {
-        String userInput = sc.nextLine(); // Use of Scanner object
+        Libraries lib = new Libraries();
+        String userInput = lib.sc.nextLine(); // Use of Scanner object
     }
 }
