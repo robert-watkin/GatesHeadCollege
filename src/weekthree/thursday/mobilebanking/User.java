@@ -3,57 +3,54 @@ package weekthree.thursday.mobilebanking;
 import java.util.ArrayList;
 
 public class User {
-    // variable declaration
-    /*
-     name
-     username
-     password
-     accounts array
-    */
+    // Variable Declaration
     private String username;
     private String password;
     private String forename;
     private String surname;
     ArrayList<Account> accounts;
-    // End of variable declaration
 
 
-    public User(String username, String password, String username1, String password1, ArrayList<Account> accounts) {
+    // Constructor for variables declared above
+
+
+    public User(String username, String password, String forename, String surname, ArrayList<Account> accounts) {
         this.username = username;
         this.password = password;
-        this.username = username1;
-        this.password = password1;
+        this.forename = forename;
+        this.surname = surname;
         this.accounts = accounts;
     }
 
+    // Getters and setters for variables within this class
+    // username
     public String getUsername(){ return username; }
-
     public void setUsername(String username) {
         this.username = username;
     }
 
+    // password
     public String getPassword() {
         return password;
     }
-
     public void setPassword(String password) {
         this.password = password;
     }
 
+    // forename
     public String getForename() {
         return forename;
     }
-
     public void setForename(String forename) {
         this.forename = forename;
     }
 
+    // surname
     public String getSurname() {
         return surname;
     }
-
     public void setSurname(String surname) {
         this.surname = surname;
     }
-
+    // END OF GETTERS AND SETTERS
 }

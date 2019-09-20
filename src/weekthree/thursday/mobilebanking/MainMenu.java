@@ -25,7 +25,7 @@ public class MainMenu {
 
     // Displays menu to the user
     private void displayMenu(User user) {
-        System.out.println("---Mobile Banking for " + user.getForename() + user.getSurname() +"---");   // Displays user name for the menu
+        System.out.println("---Mobile Banking for " + user.getForename() + " " + user.getSurname() +"---");   // Displays user name for the menu
         System.out.println("1 >\tOpen New Account");
         System.out.println("2 >\tView All Accounts");
         System.out.println("3 >\tStatements");
@@ -78,7 +78,7 @@ public class MainMenu {
             case 4:
                 System.out.println("Transfer Funds");
                 break;
-            default
+            default:
                 // default case for invalid menu input
                 // this should never be applicable as validation should already have occurred
                 System.out.println("Error! Invalid menu option");
