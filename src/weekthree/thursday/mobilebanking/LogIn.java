@@ -48,6 +48,7 @@ public class LogIn {
                 // checks if the password entered is the same as the current User in the loop
                 if (this.password.equals(u.getPassword())){
                     openMenu(u);    // calls open menu and passes through the current user
+                    loginUser();
                     break;
                 } else{
                     System.out.println("Password Incorrect");   // incorrect password error message

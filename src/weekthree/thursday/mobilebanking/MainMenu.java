@@ -18,9 +18,22 @@ public class MainMenu {
 
     // Run function used to call other funcitons within the program
     public void run(){
-        displayMenu(user);      // Outputs the menu to the user
-        userChoice();           // Takes the users menu choice + validates choice
-        processChoice();        // Processes the choice and decides what to do next
+        if (user.accounts.size() > 0){
+            displayMenu(user);      // Outputs the menu to the user
+        }
+        else {
+            newCustomer();
+        }
+    }
+
+    private void newCustomer() {
+        System.out.println("---Mobile Banking for " + user.getForename() + " " + user.getSurname() +"---");   // Displays user name for the menu
+        System.out.println("We see you currently do not have an account");
+        System.out.println("Would you like to open one now (y/n)");
+        String choice = sc.nextLine();
+        if(choice.equalsIgnoreCase("y")){
+            // TODO Open account
+        }
     }
 
     // Displays menu to the user
@@ -33,6 +46,7 @@ public class MainMenu {
         System.out.println("0 >\tLog Out");
         System.out.println();
         System.out.println("Please enter a number from the menu above : ");
+        userChoice();       // Takes the users menu choice + validates choice
     }
 
     // Take / validate input
@@ -51,10 +65,10 @@ public class MainMenu {
                 } else {
                     // if user choice is in in range then the choice is returned
                     this.choice = choice;
+                    processChoice();        // Processes the choice and decides what to do next
                     return;
                 }
             } catch (Exception e) {
-                //
                 System.out.println("Error! Please enter a valid number from the option above");
             }
         }
@@ -67,16 +81,16 @@ public class MainMenu {
                 System.out.println("Log Out");
                 break;
             case 1:
-                System.out.println("Open New Account");
+                System.out.println("Open New Account"); // TODO Open Account
                 break;
             case 2:
-                System.out.println("View All Accounts");
+                System.out.println("View All Accounts"); // TODO View All Accounts
                 break;
             case 3:
-                System.out.println("View Transactions");
+                System.out.println("View Transactions"); // TODO View Transactions
                 break;
             case 4:
-                System.out.println("Transfer Funds");
+                System.out.println("Transfer Funds");   // TODO Transfer Funds
                 break;
             default:
                 // default case for invalid menu input

@@ -12,11 +12,10 @@ public class Account {
 
 
     // Constructor sets all variables declared above
-    public Account(int accountNumber, double accountBalance, String accountType, ArrayList<Transaction> transactions) {
+    public Account(int accountNumber, double accountBalance, String accountType) {
         this.accountNumber = accountNumber;
         this.accountBalance = accountBalance;
         this.accountType = accountType;
-        this.transactions = transactions;
     }
 
     // Getters and setters for variables within this class
