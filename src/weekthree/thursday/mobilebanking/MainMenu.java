@@ -1,5 +1,6 @@
 package weekthree.thursday.mobilebanking;
 
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class MainMenu {
@@ -18,11 +19,13 @@ public class MainMenu {
 
     // Run function used to call other funcitons within the program
     public void run(){
-        if (user.accounts.size() > 0){
-            displayMenu(user);      // Outputs the menu to the user
+
+        if (user.getAccountNumbers().size() > 0){
+            displayMenu();      // Outputs the menu to the user
         }
         else {
             newCustomer();
+            run();
         }
     }
 
@@ -31,13 +34,16 @@ public class MainMenu {
         System.out.println("We see you currently do not have an account");
         System.out.println("Would you like to open one now (y/n)");
         String choice = sc.nextLine();
-        if(choice.equalsIgnoreCase("y")){
-            // TODO Open account
+        sc = new Scanner(System.in);
+        if(choice.equalsIgnoreCase("y")) {
+            openAccount();
         }
     }
 
+
+
     // Displays menu to the user
-    private void displayMenu(User user) {
+    private void displayMenu() {
         System.out.println("---Mobile Banking for " + user.getForename() + " " + user.getSurname() +"---");   // Displays user name for the menu
         System.out.println("1 >\tOpen New Account");
         System.out.println("2 >\tView All Accounts");
@@ -46,51 +52,33 @@ public class MainMenu {
         System.out.println("0 >\tLog Out");
         System.out.println();
         System.out.println("Please enter a number from the menu above : ");
-        userChoice();       // Takes the users menu choice + validates choice
+        int choice = UserChoice.getChoice(4);       // Takes the users menu choice + validates choice
+        processChoice(choice);
     }
 
-    // Take / validate input
-    private void userChoice() {
-        int choice;         // Holds users choice
-        while (true) {      // loop for validation
-
-            // Try, catch to prevent input errors
-            try {
-                choice = Integer.parseInt(sc.next());   // Takes user input and tries to convert to integer
-
-                // Checks if the user choice is out of range
-                if (choice < 0 || choice > 4) {
-                    // error message if value is out of range
-                    System.out.println("Error! Please enter a valid number from the option above");
-                } else {
-                    // if user choice is in in range then the choice is returned
-                    this.choice = choice;
-                    processChoice();        // Processes the choice and decides what to do next
-                    return;
-                }
-            } catch (Exception e) {
-                System.out.println("Error! Please enter a valid number from the option above");
-            }
-        }
-    }
 
     // Processes the users menu input for what to do next
-    private void processChoice() {
-        switch (this.choice) {
+    private void processChoice(int choice) {
+        switch (choice) {
             case 0:
                 System.out.println("Log Out");
                 break;
             case 1:
-                System.out.println("Open New Account"); // TODO Open Account
+                openAccount();
+                displayMenu();
                 break;
             case 2:
-                System.out.println("View All Accounts"); // TODO View All Accounts
+                viewAccounts();
+                displayMenu();
                 break;
             case 3:
-                System.out.println("View Transactions"); // TODO View Transactions
+                ViewAccounts va = new ViewAccounts(user);
+                va.showAllTransactions();
+                displayMenu();
                 break;
             case 4:
-                System.out.println("Transfer Funds");   // TODO Transfer Funds
+                transferFunds();
+                displayMenu();
                 break;
             default:
                 // default case for invalid menu input
@@ -98,5 +86,19 @@ public class MainMenu {
                 System.out.println("Error! Invalid menu option");
                 break;
         }
+    }
+
+    private void transferFunds() {
+        TransferFunds tf = new TransferFunds(user);
+        tf.performTransfer();
+    }
+
+    private void viewAccounts() {
+        ViewAccounts va = new ViewAccounts(user);
+        va.viewAccounts();
+    }
+
+    private void openAccount() {
+        OpenAccount oa = new OpenAccount(user);
     }
 }
