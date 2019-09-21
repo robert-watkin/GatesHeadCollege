@@ -1,3 +1,9 @@
+/*/////////////////////////////////////////
+This function handles account viewing
+including  the options available for the
+accounts once selected
+Also holds all created accounts in an arrayList
+ ////////////////////////////////////////*/
 package weekthree.thursday.mobilebanking;
 
 import java.util.ArrayList;
@@ -11,36 +17,49 @@ public class ViewAccounts {
     private User u;
     private int selectedAccount;
 
+    // Constructor takes the current logged in user
     public ViewAccounts(User u) {
         this.u = u;
     }
 
+    // function to view the accounts held by the user
     public void viewAccounts(){
+        // checks if the user has 0 accounts
         if (u.getAccountNumbers().size() == 0){
+            // asks the user if they want to create a new account
             System.out.println("You currently don't have any accounts.");
             System.out.println("Do you wish to create an account? (y/n):");
-            Scanner sc = new Scanner(System.in);
-            String choice = sc.nextLine();
+            Scanner sc = new Scanner(System.in);    // creates a new scanner object
+            String choice = sc.nextLine();      // takes the user input and stores it in input
+
+            // checks to see if the user wants to create a new account
             if (choice.equalsIgnoreCase("y")){
-                OpenAccount oa = new OpenAccount(u);
+                OpenAccount oa = new OpenAccount(u); // initialises class to create a new account
+            } else {
+                return; // if no account is created, the program will return to the menu
             }
-            return;
         }
         printAccounts();
         selectAccount();
         accountMenu();
     }
 
+    // This function is used to show all transactions for all accounts held by the logged in user
     public void showAllTransactions(){
+        System.out.println();
+        // for each loop over all accounts
         for (int i : u.getAccountNumbers()){
+            System.out.println("For account : " + i); // specifies the current account
             selectedAccount = i;
-            viewTransactions();
+            viewTransactions(); // calls the function to print transactions
         }
     }
 
+    // this function is used to select an account which the user holds
     private void selectAccount() {
         Scanner sc = new Scanner(System.in);
 
+        // asks for account number
         System.out.println("Select an account by account number : ");
         boolean valid = false;
         while (true) {
@@ -84,54 +103,45 @@ public class ViewAccounts {
         }
     }
 
+    // calls the closeaccount class to close the relevant account
     private void closeAccount() {
-        Scanner sc = new Scanner(System.in);
-        Iterator<Account> i = accounts.iterator();
-        while (i.hasNext()) {
-            Account a = i.next();
-            if (a.getAccountNumber() == selectedAccount){
-                if (a.getAccountBalance() > 0){
-                    System.out.println("You are unable to close this account,");
-                    System.out.println("The account balance must be 0");
-                    System.out.println();
-                    System.out.println("Do you wish to transfer funds to another account (y/n)");
-                    String choice = sc.nextLine();
-                    if (choice.equalsIgnoreCase("y")){
-                        TransferFunds tf = new TransferFunds(u);
-                        tf.performTransfer();
-                        return;
-                    }
-                    else { return; }
-                }
-                System.out.println("Are you sure you want to close this account? (y/n) : ");
-                String choice = sc.nextLine();
-                if (choice.equalsIgnoreCase("y")){
-                    i.remove();
-                    u.getAccountNumbers().remove(Integer.valueOf(selectedAccount));
-                }
-            }
-        }
+        CloseAccount.closeAccount(u, selectedAccount);
     }
 
+    // function prints out transactions related to a specific account
     private void viewTransactions(){
+        // loops over accounts
         for (Account a : accounts) {
+            // if the current account being looped over is equal to the selected account
             if (a.getAccountNumber() == selectedAccount){
+                // check if there are 0 transactions to show
                 if (a.getTransactions().size() == 0){
-                    System.out.println("There are no transactions to show!");
-                    return;
+                    System.out.println("There are no transactions to show!");   // tell user there are no transactions
+                    return; // return to where function was called from
                 }
+                // loop over all transactions on account
                 for (Transaction t : a.getTransactions()){
-                    System.out.println("Transaction Date : " + t.getTransactionDate() + "; Transaction Person : " + t.getTransactionPerson() + "; Transaction Amount : " + t.getTransactionAmount());
+                    // print out the transaction details
+                    System.out.println("Transaction Date : " + t.getTransactionDate() +
+                                        "; Transaction Person : " + t.getTransactionPerson() +
+                                        "; Transaction Amount : " + t.getTransactionAmount());
                 }
             }
         }
     }
 
+    // this function prints out the details of the accounts for the user
     public void printAccounts() {
+        // loops over all accounts
         for (Account a : accounts) {
+            // for loop for the amount of accounts the logged in user has
             for (int x = 0; x < u.getAccountNumbers().size(); x++) {
+                // checks if the account number is the same as any of the users accounts
                 if (a.getAccountNumber() == u.getAccountNumbers().get(x)) {
-                    System.out.println("Account Number : " + a.getAccountNumber() + "; Account Balance :" + a.getAccountBalance() + "; Account Type : " + a.getAccountType());
+                    // prints out account details
+                    System.out.println("Account Number : " + a.getAccountNumber() +
+                                        "; Account Balance :" + a.getAccountBalance() +
+                                        "; Account Type : " + a.getAccountType());
                 }
             }
         }

@@ -1,3 +1,6 @@
+/*/////////////////////////////////////////
+This function holds user details
+ ////////////////////////////////////////*/
 package weekthree.thursday.mobilebanking;
 
 import java.util.ArrayList;

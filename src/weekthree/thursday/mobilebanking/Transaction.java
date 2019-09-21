@@ -1,3 +1,6 @@
+/*/////////////////////////////////////////
+This function handles account deletion
+ ////////////////////////////////////////*/
 package weekthree.thursday.mobilebanking;
 
 public class Transaction {

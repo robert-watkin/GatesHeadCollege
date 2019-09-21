@@ -1,3 +1,6 @@
+/*/////////////////////////////////////////
+This function handles account data
+ ////////////////////////////////////////*/
 package weekthree.thursday.mobilebanking;
 import java.util.Date;
 

@@ -1,3 +1,7 @@
+/*
+This class is used throughout the
+program to take user input for menu inputs
+ */
 package weekthree.thursday.mobilebanking;
 
 import java.util.Scanner;

@@ -29,6 +29,7 @@ public class MainMenu {
         }
     }
 
+    // Menu for new customers which don't have accounts
     private void newCustomer() {
         System.out.println("---Mobile Banking for " + user.getForename() + " " + user.getSurname() +"---");   // Displays user name for the menu
         System.out.println("We see you currently do not have an account");
@@ -88,16 +89,21 @@ public class MainMenu {
         }
     }
 
+    // function to transfer funds
     private void transferFunds() {
+        // creates new transfer funds object with the logged in user and performs the tranfer
         TransferFunds tf = new TransferFunds(user);
         tf.performTransfer();
     }
 
+    // function to view accounts
     private void viewAccounts() {
+        // creates new view accounts object with the logged in user and then calls view accounts within that object
         ViewAccounts va = new ViewAccounts(user);
         va.viewAccounts();
     }
 
+    // opens new account
     private void openAccount() {
         OpenAccount oa = new OpenAccount(user);
     }

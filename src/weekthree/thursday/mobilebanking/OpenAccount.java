@@ -1,3 +1,6 @@
+/*/////////////////////////////////////////
+This function handles account creation
+ ////////////////////////////////////////*/
 package weekthree.thursday.mobilebanking;
 
 import java.lang.reflect.Array;
