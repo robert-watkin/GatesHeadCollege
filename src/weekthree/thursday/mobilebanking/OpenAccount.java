@@ -13,10 +13,15 @@ public class OpenAccount {
     private String accountType;
     private double depositAmount;
     Scanner sc = new Scanner(System.in);
+    private boolean isCanceled;
 
 
     public OpenAccount(User u){
         createAccount();
+        // checks if account cancellation has occurred
+        if (isCanceled){
+            return;
+        }
         Integer newAccountNum = 1;
         if (ViewAccounts.accounts.size() > 0) {
             newAccountNum = ViewAccounts.accounts.get(ViewAccounts.accounts.size() - 1).getAccountNumber() + 1;
@@ -44,6 +49,7 @@ public class OpenAccount {
             case 0:
                 // cancel
                 System.out.println("Account creation canceled");
+                isCanceled = true;
                 return;
             case 1:
                 accountType = "Current Account";

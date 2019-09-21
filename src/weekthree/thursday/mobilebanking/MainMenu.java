@@ -45,15 +45,20 @@ public class MainMenu {
 
     // Displays menu to the user
     private void displayMenu() {
+        int choiceAmount = 3;
         System.out.println("---Mobile Banking for " + user.getForename() + " " + user.getSurname() +"---");   // Displays user name for the menu
         System.out.println("1 >\tOpen New Account");
         System.out.println("2 >\tView All Accounts");
         System.out.println("3 >\tStatements");
-        System.out.println("4 >\tTransfer Funds");
+        if (user.getAccountNumbers().size() > 1) {
+            System.out.println("4 >\tTransfer Funds");
+            choiceAmount = 4;
+
+        }
         System.out.println("0 >\tLog Out");
         System.out.println();
         System.out.println("Please enter a number from the menu above : ");
-        int choice = UserChoice.getChoice(4);       // Takes the users menu choice + validates choice
+        int choice = UserChoice.getChoice(choiceAmount);       // Takes the users menu choice + validates choice
         processChoice(choice);
     }
 
