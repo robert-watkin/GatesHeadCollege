@@ -81,14 +81,16 @@ public class ViewAccounts {
 
     private void accountMenu() {
         while(true) {
+            // outputs a smaller menu for the accounts
             System.out.println();
             System.out.println("Account " + selectedAccount + " selected");
             System.out.println("1 - Close Account");
             System.out.println("2 - View Transactions");
             System.out.println("0 - Return to Main Menu");
 
-            int c = UserChoice.getChoice(2);
+            int c = UserChoice.getChoice(2); // gets the user input from the getChoice class
 
+            // case statement processes users choice
             switch (c) {
                 case 0:
                     return;
