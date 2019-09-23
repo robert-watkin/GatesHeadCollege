@@ -99,7 +99,7 @@ public class TransferFunds {
         }
     }
 
-    // funciton to select an account held only by that specific user
+    // function to select an account held only by that specific user
     private int selectUserAccount(){
         int selectedAccount;
 
