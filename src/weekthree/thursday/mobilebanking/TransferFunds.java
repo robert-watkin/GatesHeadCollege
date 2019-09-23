@@ -82,10 +82,8 @@ public class TransferFunds {
             sc = new Scanner(System.in); // re-initialises scanner
             try {
                 selectedAccount = Integer.parseInt(sc.nextLine()); // attempts to parse user input as Integer
-
                 // for each account in the database
                 for (Account a : ViewAccounts.accounts) {
-
                     // checks if the account in loop is the same as the selected account
                     if (a.getAccountNumber() == selectedAccount) {
                         return selectedAccount; // returns the selected account
@@ -104,11 +102,13 @@ public class TransferFunds {
     // funciton to select an account held only by that specific user
     private int selectUserAccount(){
         int selectedAccount;
+
         // while loop for validation
         while (true) {
             sc = new Scanner(System.in);    // re-initialise scanner
             try {
                 selectedAccount = Integer.parseInt(sc.nextLine());
+                // for each account held by the user
                 for (Integer i : u.getAccountNumbers()) {
                     if (selectedAccount == i) {
                         return selectedAccount;
