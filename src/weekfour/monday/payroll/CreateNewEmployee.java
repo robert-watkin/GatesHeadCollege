@@ -38,6 +38,7 @@ public class CreateNewEmployee {
             try {
                 sc = new Scanner(System.in);
                 WH = Float.parseFloat(sc.nextLine());
+                return;
             }
             catch (Exception e){
                 System.out.println("ERROR! Please enter a valid number (can be decimal) :");
@@ -104,7 +105,7 @@ public class CreateNewEmployee {
     private void setFirstName() {
         System.out.println("Please enter the new employees first name: ");
         Scanner sc = new Scanner(System.in);
-        UN = sc.nextLine();
+        FN = sc.nextLine();
     }
 
     private void setNewID() {
