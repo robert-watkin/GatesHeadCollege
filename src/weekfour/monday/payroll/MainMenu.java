@@ -81,10 +81,13 @@ public class MainMenu {
                 employeeMenu();
                 break;
             case 2:
-                // TODO edit employee details
                 EditEmployeeDetails eed = new EditEmployeeDetails(e);
                 eed.editEmployeeDetails();
                 employeeMenu();
+                break;
+            case 3:
+                CreateNewEmployee cne = new CreateNewEmployee();
+                cne.createEmployee();
                 break;
             case 0:
                 System.out.println("==================");
