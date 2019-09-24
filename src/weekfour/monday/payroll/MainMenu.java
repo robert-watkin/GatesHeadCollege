@@ -66,6 +66,7 @@ public class MainMenu {
         System.out.println("║                            ║");
         System.out.println("║1. View Employees           ║");
         System.out.println("║2. Edit Employee Details    ║");
+        System.out.println("║3. Create New Employee      ║");
         System.out.println("║0. Return                   ║");
         System.out.println("==============================");
         getEmployeeChoice();
@@ -73,10 +74,10 @@ public class MainMenu {
 
     private void getEmployeeChoice() {
         int choice = 0;
-        choice = UserChoice.getChoice(2);
+        choice = UserChoice.getChoice(3);
         switch(choice){
             case 1:
-                // TODO View Employees
+                viewEmployees();
                 employeeMenu();
                 break;
             case 2:
@@ -92,6 +93,11 @@ public class MainMenu {
                 System.out.println("ERROR! Invalid Option.");
                 break;
         }
+    }
+
+    private void viewEmployees() {
+        ViewEmployees ve = new ViewEmployees();
+        ve.printAllEmployees();
     }
 
     private void holidayMenu() {

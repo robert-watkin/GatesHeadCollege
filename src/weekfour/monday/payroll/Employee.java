@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 public class Employee {
     // Variable Declaration
-    private int userID;
+    private int employeeID;
     private String firstName;
     private String lastName;
     private String username;
@@ -18,8 +18,8 @@ public class Employee {
     private float holidayEntitlement;
 
     // Constructor
-    public Employee(int userID, String firstName, String lastName, String position, String username, String password, float workingHours) {
-        this.userID = userID;
+    public Employee(int employeeID, String firstName, String lastName, String position, String username, String password, float workingHours) {
+        this.employeeID = employeeID;
         this.firstName = firstName;
         this.lastName = lastName;
         this.position = position;
@@ -36,7 +36,7 @@ public class Employee {
         holidayEntitlement = (workingHours/ (float) 7.5)* (float) 5.6;
     }
 
-
+    // checks if the employee is an admin based on their position
     private void checkIsAdmin(){
         switch(position){
             case "payroll":
@@ -47,6 +47,7 @@ public class Employee {
         }
     }
 
+    // sets the rate of pay for the employee based on their position
     private void checkRateOfPay(){
         switch(position){
             case "Entry Level":
@@ -92,12 +93,12 @@ public class Employee {
         this.holidayEntitlement = holidayEntitlement;
     }
 
-    public int getUserID() {
-        return userID;
+    public int getEmployeeID() {
+        return employeeID;
     }
 
-    public void setUserID(int userID) {
-        this.userID = userID;
+    public void setEmployeeID(int employeeID) {
+        this.employeeID = employeeID;
     }
 
     public String getFirstName() {

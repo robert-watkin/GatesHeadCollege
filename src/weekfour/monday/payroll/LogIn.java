@@ -29,6 +29,7 @@ public class LogIn {
         }
     }
 
+    // welcome message for when the application is first opened
     private void welcomeMessage() {
         System.out.println("╔════════════════════╗");
         System.out.println("║     WELCOME TO     ║");
@@ -37,6 +38,7 @@ public class LogIn {
         System.out.println("======================");
     }
 
+    // function called when the user wishes to log in
     private void tryLogIn(){
         sc = new Scanner(System.in);
         System.out.println("Please Enter Your Username: ");
@@ -46,6 +48,7 @@ public class LogIn {
         password = sc.nextLine();
         System.out.println("======================");
 
+        int counter = 1;
         for (Employee e : Initialise.employees) {
             if (e.getUsername().equalsIgnoreCase(this.username)) {
                 if (e.getPassword().equals(this.password)) {
@@ -53,7 +56,10 @@ public class LogIn {
                     break;
                 }
             }
-            System.out.println("Incorrect Username or Password");
+            else if(counter == Initialise.employees.size()) {
+                System.out.println("Incorrect Username or Password");
+            }
+            counter++;
         }
     }
 
