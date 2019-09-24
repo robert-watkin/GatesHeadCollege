@@ -14,7 +14,8 @@ public class ViewEmployees {
 
     public void printEmployeeDetails(){
         System.out.println("=============================");
-        Employee e = takeEmployeeID();
+        SelectEmployee se = new SelectEmployee();
+        Employee e = se.selectEmployee();
         if (e == null){
             return;
         }
@@ -30,35 +31,5 @@ public class ViewEmployees {
         Scanner sc = new Scanner(System.in);
         sc.nextLine();
 
-    }
-
-    private Employee takeEmployeeID() {
-        Scanner sc = new Scanner(System.in);
-        Employee e;
-        int i;
-        while(true) {
-            try {
-                System.out.println("To view an employees details, type in their employee number");
-                System.out.println("Enter 0 to return to Employee Menu");
-                i = Integer.parseInt(sc.nextLine());
-                break;
-            }
-            catch (Exception exception){
-                System.out.println("Please enter a valid number");
-            }
-        }
-
-        int counter = 1;
-        for (Employee emp : Initialise.employees){
-            if (emp.getEmployeeID() == i){
-                e = emp;
-                return e;
-            }
-            else if(counter == Initialise.employees.size()){
-                System.out.println("This employee could not be found in the database!");
-                return null;
-            }
-        }
-        return null;
     }
 }

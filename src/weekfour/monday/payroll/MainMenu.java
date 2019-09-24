@@ -82,6 +82,8 @@ public class MainMenu {
                 break;
             case 2:
                 // TODO edit employee details
+                EditEmployeeDetails eed = new EditEmployeeDetails(e);
+                eed.editEmployeeDetails();
                 employeeMenu();
                 break;
             case 0:
