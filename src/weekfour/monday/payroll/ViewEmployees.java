@@ -23,6 +23,7 @@ public class ViewEmployees {
         System.out.println("Name \t\t\t\t\t>> " + e.getFirstName() + " " + e.getLastName());
         System.out.println("Username \t\t\t\t>> " + e.getUsername());
         System.out.println("Holiday Entitlement \t>> " + Math.round(e.getHolidayEntitlement()));
+        System.out.println("Remaining Holidays \t\t>> " + Math.round(e.getRemainingHolidays()));
         System.out.println("Position\t\t\t\t>> " + e.getPosition());
         System.out.println("Contracted Hours \t\t>> " + e.getWorkingHours());
 

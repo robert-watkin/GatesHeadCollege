@@ -32,16 +32,17 @@ public class Employee {
         checkHolidayEntitlement();
         this.remainingHolidays = Math.round(this.holidayEntitlement);
         paymentIDs = new ArrayList<Integer>();
+        holidayRequestIDs = new ArrayList<Integer>();
     }
 
     // Functionality
     private void checkHolidayEntitlement() {
-        holidayEntitlement = (workingHours/ (float) 7.5)* (float) 5.6;
+        holidayEntitlement = (workingHours / (float) 7.5) * (float) 5.6;
     }
 
     // checks if the employee is an admin based on their position
-    private void checkIsAdmin(){
-        switch(position){
+    private void checkIsAdmin() {
+        switch (position) {
             case "payroll":
             case "MD":
             case "HR":
@@ -51,8 +52,8 @@ public class Employee {
     }
 
     // sets the rate of pay for the employee based on their position
-    private void checkRateOfPay(){
-        switch(position){
+    private void checkRateOfPay() {
+        switch (position) {
             case "Entry Level":
                 rateOfPay = (float) 6.15;
                 break;
@@ -177,7 +178,19 @@ public class Employee {
     }
 
     // add payment
-    public void addPayment(int newPaymentID){
+    public void addPayment(int newPaymentID) {
         this.paymentIDs.add(newPaymentID);
+    }
+
+    public void addHolidayRequest(int newHolidayID) {
+        this.holidayRequestIDs.add(newHolidayID);
+    }
+
+    public void removeHolidayDays(int days){
+        remainingHolidays = remainingHolidays - days;
+    }
+
+    public void addHolidayDays(int days){
+        remainingHolidays = remainingHolidays + days;
     }
 }

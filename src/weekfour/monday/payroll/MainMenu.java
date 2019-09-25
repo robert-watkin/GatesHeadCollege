@@ -1,5 +1,6 @@
 package weekfour.monday.payroll;
 
+import javax.swing.text.View;
 import java.text.ParseException;
 import java.util.Scanner;
 
@@ -107,7 +108,7 @@ public class MainMenu {
         ve.printAllEmployees();
     }
 
-    private void holidayMenu() {
+    private void holidayMenu() throws ParseException {
         System.out.println("╔════════════════════════════╗");
         System.out.println("║          HOLIDAYS          ║");
         System.out.println("║                            ║");
@@ -125,7 +126,7 @@ public class MainMenu {
         getHolidayChoice();
     }
 
-    private void getHolidayChoice() {
+    private void getHolidayChoice() throws ParseException {
         int choice = 0;
         if (e.isAdmin()) {
             choice = UserChoice.getChoice(5);
@@ -141,19 +142,24 @@ public class MainMenu {
                 holidayMenu();
                 break;
             case 2:
-                // TODO View Holiday Requests
+                ViewHolidayRequests vhr = new ViewHolidayRequests();
+                vhr.viewFutureHolidays(e);
                 holidayMenu();
                 break;
             case 3:
-                // TODO View Previous Holidays
+                ViewHolidayRequests vph = new ViewHolidayRequests();
+                vph.viewPastHolidays(e);
                 holidayMenu();
                 break;
             case 4:
-                // TODO Create holiday request
+                CreateHolidayRequest chr = new CreateHolidayRequest();
+                chr.createHolidayRequest(e);
                 holidayMenu();
                 break;
             case 5:
                 // TODO Authorise Holiday Request
+                AuthoriseHolidays ah = new AuthoriseHolidays();
+                ah.authoriseHolidays(e);
                 holidayMenu();
                 break;
             case 0:
