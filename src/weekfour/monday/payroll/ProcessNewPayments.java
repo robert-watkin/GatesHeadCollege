@@ -49,7 +49,7 @@ public class ProcessNewPayments {
     public Date getDate() throws ParseException {
         SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy");
         Scanner sc = new Scanner(System.in);
-        System.out.println("Please enter the day you wish this payment to go through : ");
+        System.out.println("Please specify the day (1-31) : ");
         String day = "";
         String month = "";
         String year = "";
@@ -77,7 +77,7 @@ public class ProcessNewPayments {
             }
         }
 
-        System.out.println("Please enter the month you wish this payment to go through : ");
+        System.out.println("Please specify the month (1-12) : ");
         while (true){
             sc = new Scanner(System.in);
             try{
@@ -101,7 +101,7 @@ public class ProcessNewPayments {
             }
         }
 
-        System.out.println("Please enter the year you wish this payment to go through : ");
+        System.out.println("Please specify the year (2000-9999) : ");
         while (true){
             sc = new Scanner(System.in);
             try{

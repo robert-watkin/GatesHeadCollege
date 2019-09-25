@@ -184,6 +184,7 @@ public class MainMenu {
             System.out.println("║       ADMIN FEATURES       ║");
             System.out.println("║3. Process New Payment      ║");
             System.out.println("║4. Edit Pending Payment     ║");
+            System.out.println("║5. View Payment Report      ║");
         }
         System.out.println("║0. Return                   ║");
         System.out.println("==============================");
@@ -193,7 +194,7 @@ public class MainMenu {
     private void getPaymentChoice() throws ParseException {
         int choice = 0;
         if (e.isAdmin()) {
-            choice = UserChoice.getChoice(4);
+            choice = UserChoice.getChoice(5);
         }
         else{
             choice = UserChoice.getChoice(2);
@@ -227,6 +228,10 @@ public class MainMenu {
                 EditPendingPayment epp = new EditPendingPayment();
                 epp.editPayments();
                 paymentsMenu();
+                break;
+            case 5:
+                ViewPayments vpr = new ViewPayments();
+                vpr.viewPaymentReport();
                 break;
             case 0:
                 System.out.println("==================");
