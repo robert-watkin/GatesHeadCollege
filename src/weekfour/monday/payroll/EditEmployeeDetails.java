@@ -37,7 +37,6 @@ public class EditEmployeeDetails {
                 menuAndChoice();
                 break;
             case 3:
-                // TODO edit position
                 editValue("pos");
                 menuAndChoice();
                 break;

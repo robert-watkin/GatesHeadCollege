@@ -1,15 +1,18 @@
 package weekfour.monday.payroll;
 
+import java.text.ParseException;
+import java.util.Scanner;
+
 public class MainMenu {
     private Employee e;
 
 
-    public MainMenu(Employee e) {
+    public MainMenu(Employee e) throws ParseException {
         this.e = e;
         menu();
     }
 
-    private void menu(){
+    private void menu() throws ParseException {
         System.out.println("╔════════════════════════════╗");
         if (e.isAdmin()) {
             System.out.println("║            ADMIN           ║");
@@ -28,7 +31,7 @@ public class MainMenu {
         getMainChoice();
     }
 
-    private void getMainChoice() {
+    private void getMainChoice() throws ParseException {
         int choice = 0;
         if (e.isAdmin()) {
             choice = UserChoice.getChoice(3);
@@ -60,7 +63,6 @@ public class MainMenu {
     }
 
     private void employeeMenu() {
-        // TODO employee menu
         System.out.println("╔════════════════════════════╗");
         System.out.println("║         EMPLOYEES          ║");
         System.out.println("║                            ║");
@@ -106,9 +108,8 @@ public class MainMenu {
     }
 
     private void holidayMenu() {
-        // TODO holiday menu
         System.out.println("╔════════════════════════════╗");
-        System.out.println("║          PAYMENTS          ║");
+        System.out.println("║          HOLIDAYS          ║");
         System.out.println("║                            ║");
         System.out.println("║1. Check Holiday Balance    ║");
         System.out.println("║2. View Holiday Requests    ║");
@@ -134,7 +135,9 @@ public class MainMenu {
         }
         switch(choice){
             case 1:
-                // TODO Check Holiday Balance
+                System.out.println("Holiday Entitlement - " + e.getHolidayEntitlement());
+                System.out.println("Remaining Holidays - " + e.getRemainingHolidays());
+                System.out.println();
                 holidayMenu();
                 break;
             case 2:
@@ -164,13 +167,13 @@ public class MainMenu {
         }
     }
 
-    private void paymentsMenu() {
+    private void paymentsMenu() throws ParseException {
         // TODO payment menu
         System.out.println("╔════════════════════════════╗");
         System.out.println("║          PAYMENTS          ║");
         System.out.println("║                            ║");
         System.out.println("║1. View Past Payments       ║");
-        System.out.println("║2. View Pending Payments     ║");
+        System.out.println("║2. View Pending Payments    ║");
         if(e.isAdmin()) {
             System.out.println("║       ADMIN FEATURES       ║");
             System.out.println("║3. Process New Payment      ║");
@@ -181,7 +184,7 @@ public class MainMenu {
         getPaymentChoice();
     }
 
-    private void getPaymentChoice() {
+    private void getPaymentChoice() throws ParseException {
         int choice = 0;
         if (e.isAdmin()) {
             choice = UserChoice.getChoice(4);
@@ -191,19 +194,32 @@ public class MainMenu {
         }
         switch(choice){
             case 1:
-                // TODO view past payments
+                ViewPayments vp = new ViewPayments();
+                vp.viewPastPayments(e);
                 paymentsMenu();
                 break;
             case 2:
-                // TODO view pending payments
+                ViewPayments vpPending = new ViewPayments();
+                vpPending.viewPendingPayments(e);
                 paymentsMenu();
                 break;
             case 3:
-                // TODO process new payments
+                ProcessNewPayments pnp = new ProcessNewPayments();
+                System.out.println("Would you like to process a payment for ALL employees (y/n)");
+                Scanner sc = new Scanner(System.in);
+
+                if (sc.nextLine().equalsIgnoreCase("y")) {
+                    pnp.createBulkPayment(e);
+                }
+                else{
+                    pnp.createNewPayment(e);
+                }
                 paymentsMenu();
                 break;
             case 4:
                 // TODO edit pending payments
+                EditPendingPayment epp = new EditPendingPayment();
+                epp.editPayments();
                 paymentsMenu();
                 break;
             case 0:

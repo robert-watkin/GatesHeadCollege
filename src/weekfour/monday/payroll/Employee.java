@@ -10,12 +10,13 @@ public class Employee {
     private String username;
     private String password;
     private String position;
-    private ArrayList<HolidayRequest> holidayRequests;
-    private ArrayList<Payment> Payments;
+    private ArrayList<Integer> holidayRequestIDs;
+    private ArrayList<Integer> paymentIDs;
     private float workingHours;
     private float rateOfPay;
     private boolean isAdmin;
     private float holidayEntitlement;
+    private int remainingHolidays;
 
     // Constructor
     public Employee(int employeeID, String firstName, String lastName, String position, String username, String password, float workingHours) {
@@ -29,6 +30,8 @@ public class Employee {
         checkIsAdmin();
         checkRateOfPay();
         checkHolidayEntitlement();
+        this.remainingHolidays = Math.round(this.holidayEntitlement);
+        paymentIDs = new ArrayList<Integer>();
     }
 
     // Functionality
@@ -125,20 +128,20 @@ public class Employee {
         this.position = position;
     }
 
-    public ArrayList<HolidayRequest> getHolidayRequests() {
-        return holidayRequests;
+    public ArrayList<Integer> getHolidayRequestIDs() {
+        return holidayRequestIDs;
     }
 
-    public void setHolidayRequests(ArrayList<HolidayRequest> holidayRequests) {
-        this.holidayRequests = holidayRequests;
+    public void setHolidayRequestIDs(ArrayList<Integer> holidayRequestIDs) {
+        this.holidayRequestIDs = holidayRequestIDs;
     }
 
-    public ArrayList<Payment> getPayments() {
-        return Payments;
+    public ArrayList<Integer> getPaymentIDs() {
+        return paymentIDs;
     }
 
-    public void setPayments(ArrayList<Payment> payments) {
-        Payments = payments;
+    public void setPaymentIDs(ArrayList<Integer> paymentIDs) {
+        this.paymentIDs = paymentIDs;
     }
 
     public float getWorkingHours() {
@@ -163,5 +166,18 @@ public class Employee {
 
     public void setAdmin(boolean admin) {
         isAdmin = admin;
+    }
+
+    public int getRemainingHolidays() {
+        return remainingHolidays;
+    }
+
+    public void setRemainingHolidays(int remainingHolidays) {
+        this.remainingHolidays = remainingHolidays;
+    }
+
+    // add payment
+    public void addPayment(int newPaymentID){
+        this.paymentIDs.add(newPaymentID);
     }
 }
