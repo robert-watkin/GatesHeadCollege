@@ -13,8 +13,39 @@ public class MultiplicationTables {
         int endPoint = 0;
         int mult = 0;
         while (true) {
-            System.out.println("Start point : ");
+            try {
+                System.out.println("Start point : ");
+                startPoint = Integer.parseInt(sc.nextLine());
+                break;
+            } catch (Exception e){
+                System.out.println("Please enter a valid number");
+            }
+        }
 
+        while (true) {
+            try {
+                System.out.println("End point : ");
+                endPoint = Integer.parseInt(sc.nextLine());
+                break;
+            } catch (Exception e){
+                System.out.println("Please enter a valid number");
+            }
+        }
+
+        while (true) {
+            try {
+                System.out.println("multiplication : ");
+                mult = Integer.parseInt(sc.nextLine());
+                break;
+            } catch (Exception e){
+                System.out.println("Please enter a valid number");
+            }
+        }
+
+        System.out.println();
+
+        for (int x = startPoint; x < endPoint; x++){
+            System.out.println(x + " x " + mult + " = " + (x*mult));
         }
     }
 }
